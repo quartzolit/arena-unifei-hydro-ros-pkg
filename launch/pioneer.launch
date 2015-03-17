@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="_hostname" default="192.168.0.191:8101"/>
+	<node name="RosAria" pkg="rosaria" type="RosAria" output="screen">
+		<param name="port" value="$(arg _hostname)" />
+	</node>
+</launch>

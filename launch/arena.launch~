@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="_dis_amg_bot_1" default="false"/>
+  	<arg name="_hn_amg_bot_1" default="192.168.0.191"/>
+  	<arg name="_pt_amg_bot_1" default="8101"/>
+	<arg name="_dis_amg_bot_2" default="false"/>	
+	<arg name="_hn_amg_bot_2" default="192.168.0.192"/>
+	<arg name="_pt_amg_bot_2" default="8101"/>
+	<arg name="_dis_amg_bot_3" default="false"/>	
+	<arg name="_hn_amg_bot_3" default="192.168.0.193"/>
+	<arg name="_pt_amg_bot_3" default="8101"/>
+	<arg name="_dis_p3_dx" default="false"/>
+	<arg name="_hn_p3_dx" default="192.168.0.181"/>
+	<arg name="_pt_p3_dx" default="8101"/>
+	<arg name="_dis_robotino" default="false"/>
+	<arg name="_hn_robotino" default="192.168.0.107"/>
+	<arg name="_pt_robotino" default="12080"/>
+	<include file="$(find arena_unifei)/launch/run_all_up.launch">
+		<arg name="_dis_amg_bot_1" value="$(arg )"/>
+	  	<arg name="_hn_amg_bot_1" value="$(arg _hn_amg_bot_1):$(arg _pt_amg_bot_1)"/>
+		<arg name="_dis_amg_bot_2" default="false"/>	
+		<arg name="_hn_amg_bot_2" value="$(arg _hn_amg_bot_2):$(arg _pt_amg_bot_2)"/>
+		<arg name="_dis_amg_bot_3" default="false"/>	
+		<arg name="_hn_amg_bot_3" value="$(arg _hn_amg_bot_3):$(arg _pt_amg_bot_3)"/>
+		<arg name="_dis_p3_dx" default="false"/>
+  		<arg name="_hn_p3_dx" value="$(arg _hn_p3_dx):$(arg _pt_p3_dx)"/>
+		<arg name="_dis_robotino" default="false"/>
+  		<arg name="_hn_robotino" value="$(arg _hn_robotino):$(arg _pt_robotino)"/>
+	</include>
+	<node name="arena_unifei_node" pkg="robotino_motion" type="robotino_motion_node" output="screen">
+	</node>
+</launch>
