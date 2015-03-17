@@ -13,7 +13,7 @@
 /**
  *
  */
-Festo::Festo(ros::NodeHandle nh, bool holonomic) : Robot(nh, holonomic) {
+Festo::Festo(ros::NodeHandle nh, std::string name, bool holonomic) : Robot(nh, name, holonomic) {
 	setPort("12080");
 }
 

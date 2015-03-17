@@ -20,4 +20,5 @@ add_executable(arena_node
 	src/AmigoBot.cpp
 	src/P3_DX.cpp
 	src/Robotino.cpp
+	src/ArenaUnifei.cpp
 	)

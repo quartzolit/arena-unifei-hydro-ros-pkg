@@ -17,7 +17,7 @@ class AmigoBot : public Pioneer {
 
 public:
 
-	AmigoBot(ros::NodeHandle nh);
+	AmigoBot(ros::NodeHandle nh, std::string name);
 	~AmigoBot();
 
 };

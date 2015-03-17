@@ -13,7 +13,7 @@
 /**
  *
  */
-Pioneer::Pioneer(ros::NodeHandle nh, bool holonomic) : Robot(nh, holonomic){
+Pioneer::Pioneer(ros::NodeHandle nh, std::string name, bool holonomic) : Robot(nh, name, holonomic){
 	setPort("8101");
 }
 

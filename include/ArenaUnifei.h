@@ -19,10 +19,11 @@ class ArenaUnifei {
 
 public:
 
-	ArenaUnifei(ros::NodeHandle nh);
+	ArenaUnifei();
 	~ArenaUnifei();
 
 	void spin();
+	void spinOnce();
 
 private:
 

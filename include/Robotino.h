@@ -17,7 +17,7 @@ class Robotino : public Festo {
 
 public:
 
-	Robotino(ros::NodeHandle nh);
+	Robotino(ros::NodeHandle nh, std::string name);
 	~Robotino();
 
 };

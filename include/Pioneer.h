@@ -17,7 +17,7 @@ class Pioneer : public Robot {
 
 public:
 
-	Pioneer(ros::NodeHandle nh, bool holonomic = false);
+	Pioneer(ros::NodeHandle nh, std::string name, bool holonomic = false);
 	~Pioneer();
 
 private:
