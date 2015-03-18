@@ -20,10 +20,6 @@ public:
 	Pioneer(ros::NodeHandle nh, std::string name, bool holonomic = false);
 	~Pioneer();
 
-private:
-
-	virtual void readParameters();
-
 };
 
 #endif /* PIONEER_H_ */

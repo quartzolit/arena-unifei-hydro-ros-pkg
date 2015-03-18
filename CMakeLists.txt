@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(arena_node 
+add_executable(arena_unifei_node 
 	src/arena_unifei_node.cpp
 	src/Robot.cpp
 	src/Pioneer.cpp
@@ -22,3 +22,7 @@ add_executable(arena_node
 	src/Robotino.cpp
 	src/ArenaUnifei.cpp
 	)
+
+target_link_libraries(arena_unifei_node
+   	${catkin_LIBRARIES}
+)

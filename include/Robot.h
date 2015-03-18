@@ -15,6 +15,7 @@
 #define sign(a) (((a) < 0) ? -1 : (((a) > 0) ? 1 : 0))
 
 #include <ros/ros.h>
+#include <string>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Twist.h>
 #include <tf/transform_datatypes.h>
@@ -60,7 +61,7 @@ private:
 
 	void readParameters();
 	void publishVelocity();
-	void odometryCallback(nav_msgs::OdometryConstPtr& msg);
+	void odometryCallback(const nav_msgs::OdometryConstPtr& msg);
 
 };
 

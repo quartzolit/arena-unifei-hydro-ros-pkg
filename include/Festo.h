@@ -20,10 +20,6 @@ public:
 	Festo(ros::NodeHandle nh, std::string name, bool holonomic = false);
 	~Festo();
 
-private:
-
-	virtual void readParameters();
-
 };
 
 #endif /* FESTO_H_ */

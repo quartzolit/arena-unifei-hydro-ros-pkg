@@ -60,7 +60,7 @@ void Robot::publishVelocity() {
 /**
  *
  */
-void Robot::odometryCallback(nav_msgs::OdometryConstPtr& msg) {
+void Robot::odometryCallback(const nav_msgs::OdometryConstPtr& msg) {
 	curr_x_ = msg->pose.pose.position.x;
 	curr_y_ = msg->pose.pose.position.y;
 	curr_phi_ = tf::getYaw(msg->pose.pose.orientation);
