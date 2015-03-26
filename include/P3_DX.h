@@ -17,7 +17,7 @@ class P3_DX : public Pioneer {
 
 public:
 
-	P3_DX(ros::NodeHandle nh, std::string name);
+	P3_DX(ros::NodeHandle nh);
 	~P3_DX();
 
 };

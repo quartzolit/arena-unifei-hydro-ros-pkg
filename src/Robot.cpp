@@ -13,14 +13,14 @@
 /**
  *
  */
-Robot::Robot(ros::NodeHandle nh, std::string name, bool holonomic) {
+Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) {
 	nh_ = nh;
 	name_ = name;
 	odom_setted_ = false;
 	readParameters();
 	holonomic_ = holonomic;
-	odom_sub_ = nh_.subscribe("odom", 1, &Robot::odometryCallback, this);
-	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+	odom_sub_ = nh_.subscribe("/" + ns + "odom", 1, &Robot::odometryCallback, this);
+	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/" + ns + "cmd_vel", 1);
 }
 
 /**

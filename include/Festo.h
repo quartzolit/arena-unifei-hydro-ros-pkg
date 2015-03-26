@@ -17,7 +17,7 @@ class Festo : public Robot {
 
 public:
 
-	Festo(ros::NodeHandle nh, std::string name, bool holonomic = false);
+	Festo(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic = false);
 	~Festo();
 
 };

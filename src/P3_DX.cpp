@@ -13,7 +13,7 @@
 /**
  *
  */
-P3_DX::P3_DX(ros::NodeHandle nh, std::string name) : Pioneer(nh, name, false) {
+P3_DX::P3_DX(ros::NodeHandle nh) : Pioneer(nh, "p3_dx_", "p3_dx/", false) {
 	
 }
 

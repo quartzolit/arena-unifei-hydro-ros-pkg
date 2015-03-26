@@ -13,7 +13,7 @@
 /**
  *
  */
-AmigoBot::AmigoBot(ros::NodeHandle nh, std::string name) : Pioneer(nh, name, false) {
+AmigoBot::AmigoBot(ros::NodeHandle nh, std::string number) : Pioneer(nh, "amg_bot_" + number + "_", "amigobot/" + number + "/", false) {
 	
 }
 

@@ -13,7 +13,7 @@
 /**
  *
  */
-Robotino::Robotino(ros::NodeHandle nh, std::string name) : Festo(nh, name, true) {
+Robotino::Robotino(ros::NodeHandle nh) : Festo(nh, "robotino_", "robotino/", true) {
 	
 }
 

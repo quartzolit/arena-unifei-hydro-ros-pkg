@@ -24,7 +24,7 @@ class Robot {
 
 public:
 
-	Robot(ros::NodeHandle nh, std::string name, bool holonomic = false);
+	Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic = false);
 	~Robot();
 
 	void spin();
