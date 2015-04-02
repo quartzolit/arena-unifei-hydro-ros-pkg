@@ -3,7 +3,7 @@
  *
  *  Version: 1.0.0.0
  *  Created on: 16/03/2015
- *  Modified on: 01/04/2014
+ *  Modified on: 02/04/2014
  *  Author: Adriano Henrique Rossette Leite (adrianohrl@gmail.com)
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
@@ -13,7 +13,7 @@
 /**
  *
  */
-Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, std::string dist_sensors, bool holonomic) {
+Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) {
 	nh_ = nh;
 	name_ = name;
 	odom_setted_ = false;
@@ -21,7 +21,6 @@ Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, std::string d
 	holonomic_ = holonomic;
 	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/" + ns + "cmd_vel", 1);
 	odom_sub_ = nh_.subscribe("/" + ns + "odom", 1, &Robot::odometryCallback, this);
-	dist_sub_ = nh_.subscribe("/" + ns + dist_sensors, 1, &Robot::distanceSensorsCallback, this);
 }
 
 /**
@@ -30,7 +29,6 @@ Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, std::string d
 Robot::~Robot() {
 	cmd_vel_pub_.shutdown();
 	odom_sub_.shutdown();
-	dist_sub_.shutdown();
 }
 
 /**
@@ -83,38 +81,31 @@ void Robot::odometryCallback(const nav_msgs::OdometryConstPtr& msg) {
 	prev_phi_ = curr_phi_;
 }
 
-void Robot::distanceSensorsCallback(const sensor_msgs::PointCloudConstPtr& msg) {
-	dist_sensors_.clear();
-	for (int i = 0; i < getNumberOfDistanceSensors(); i++) {
-		dist_sensors_.push_back(msg->points[i]);
-	}
-}
-
 /**
  *
  */
-std::string Robot::getName() {
+std::string Robot::getName() const {
 	return name_;
 }
 
 /**
  *
  */
-std::string Robot::getHostname() {
+std::string Robot::getHostname() const {
 	return hostname_;
 }
 
 /**
  *
  */
-std::string Robot::getPort() {
+std::string Robot::getPort() const {
 	return port_;
 }
 
 /**
  *
  */
-bool Robot::isHolonomic() {
+bool Robot::isHolonomic() const {
 	return holonomic_;
 }
 

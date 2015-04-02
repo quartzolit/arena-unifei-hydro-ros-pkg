@@ -3,7 +3,7 @@
  *
  *  Version: 1.0.0.0
  *  Created on: 16/03/2015
- *  Modified on: 16/03/2014
+ *  Modified on: 02/04/2014
  *  Author: Adriano Henrique Rossette Leite (adrianohrl@gmail.com)
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
@@ -11,6 +11,8 @@
 #ifndef FESTO_H_
 #define FESTO_H_
 
+#include <vector>
+#include <sensor_msgs/PointCloud.h>
 #include "Robot.h"
 
 class Festo : public Robot {
@@ -20,7 +22,18 @@ public:
 	Festo(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic = false);
 	~Festo();	
 
+	std::vector<geometry_msgs::Point32> getDistanceSensorsValue() const;
+	geometry_msgs::Point32 getDistanceSensorsValue(int index) const;
+
 	virtual int getNumberOfDistanceSensors() const = 0;
+
+private:
+
+	ros::Subscriber dist_sub_;
+
+	std::vector<geometry_msgs::Point32> dist_values_;
+	
+	void distanceSensorsCallback(const sensor_msgs::PointCloudConstPtr& msg);
 
 };
 

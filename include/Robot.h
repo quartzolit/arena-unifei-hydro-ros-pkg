@@ -3,7 +3,7 @@
  *
  *  Version: 1.0.0.0
  *  Created on: 11/03/2015
- *  Modified on: 16/03/2014
+ *  Modified on: 02/04/2014
  *  Author: Adriano Henrique Rossette Leite (adrianohrl@gmail.com)
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
@@ -15,10 +15,10 @@
 #define sign(a) (((a) < 0) ? -1 : (((a) > 0) ? 1 : 0))
 
 #include <ros/ros.h>
-#include <string>
 #include <vector>
+#include <string>
 #include <nav_msgs/Odometry.h>
-#include <sensor_msgs/PointCloud.h>
+#include <sensor_msgs/PointCloud.h> // geometry_msgs/Point32's header is already in here
 #include <geometry_msgs/Twist.h>
 #include <tf/transform_datatypes.h>
 
@@ -26,19 +26,21 @@ class Robot {
 
 public:
 
-	Robot(ros::NodeHandle nh, std::string name, std::string ns, std::string dist_sensors, bool holonomic = false);
+	Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic = false);
 	~Robot();
 
 	void spin();
 	void spinOnce();
-	std::string getName();
-	std::string getHostname();
-	std::string getPort();
-	bool isHolonomic();
+	std::string getName() const;
+	std::string getHostname() const;
+	std::string getPort() const;
+	bool isHolonomic() const;
 	void setVelocity(double vel_x, double vel_y, double vel_phi);
 	void resetOdometry();
 
 	virtual int getNumberOfDistanceSensors() const = 0;
+	virtual std::vector<geometry_msgs::Point32> getDistanceSensorsValue() const = 0;
+	virtual geometry_msgs::Point32 getDistanceSensorsValue(int index) const = 0;
 
 protected:
 	
@@ -55,7 +57,6 @@ private:
 	geometry_msgs::Twist cmd_vel_msg_;
 	ros::Publisher cmd_vel_pub_;
 	ros::Subscriber odom_sub_;
-	ros::Subscriber dist_sub_;
 	bool odom_setted_;
 	bool holonomic_;
 	double min_linear_vel_, max_linear_vel_;
@@ -63,12 +64,12 @@ private:
 	double start_x_, start_y_, start_phi_;
 	double curr_x_, curr_y_, curr_phi_, prev_phi_;
 	double disp_x_, disp_y_, disp_phi_;
-	std::vector<geometry_msgs::Point32> dist_sensors_;
 
 	void readParameters();
 	void publishVelocity();
 	void odometryCallback(const nav_msgs::OdometryConstPtr& msg);
-	void distanceSensorsCallback(const sensor_msgs::PointCloudConstPtr& msg);
+	
+	virtual void distanceSensorsCallback(const sensor_msgs::PointCloudConstPtr& msg) = 0;
 
 };
 
