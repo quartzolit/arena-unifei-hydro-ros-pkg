@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+	<include file="$(find areana_unifei)/machine/p3_dx.machine"/>
+	<include file="$(find arena_unifei)/launch/pioneer.launch">
+		<arg name="_machine" value="p3_dx"/>
+	</include>
+	<node name="arena_unifei_node" pkg="arena_unifei" type="arena_unifei_node" output="screen">
+		<param name="dis_p3_dx_" value="false"/>
+		<param name="hn_p3_dx_" value="192.168.0.168"/>
+	</node>
+</launch>

@@ -14,11 +14,11 @@
  *
  */
 ArenaUnifei::ArenaUnifei() :
-	amg_bot_1_(nh_, "amg_bot_1"),
-	amg_bot_2_(nh_, "amg_bot_2"),
-	amg_bot_3_(nh_, "amg_bot_3"),
-	p3_dx_(nh_, "p3_dx"),
-	robotino_(nh_, "robotino") {
+	amg_bot_1_(nh_, "1"),
+	amg_bot_2_(nh_, "2"),
+	amg_bot_3_(nh_, "3"),
+	p3_dx_(nh_),
+	robotino_(nh_) {
 }
 
 /**

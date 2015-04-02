@@ -3,7 +3,7 @@
  *
  *  Version: 1.0.0.0
  *  Created on: 16/03/2015
- *  Modified on: 16/03/2014
+ *  Modified on: 02/04/2014
  *  Author: Adriano Henrique Rossette Leite (adrianohrl@gmail.com)
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
@@ -13,14 +13,14 @@
 /**
  *
  */
-Robot::Robot(ros::NodeHandle nh, std::string name, bool holonomic) {
+Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) {
 	nh_ = nh;
 	name_ = name;
 	odom_setted_ = false;
 	readParameters();
 	holonomic_ = holonomic;
-	odom_sub_ = nh_.subscribe("odom", 1, &Robot::odometryCallback, this);
-	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/" + ns + "cmd_vel", 1);
+	odom_sub_ = nh_.subscribe("/" + ns + "odom", 1, &Robot::odometryCallback, this);
 }
 
 /**
@@ -84,28 +84,28 @@ void Robot::odometryCallback(const nav_msgs::OdometryConstPtr& msg) {
 /**
  *
  */
-std::string Robot::getName() {
+std::string Robot::getName() const {
 	return name_;
 }
 
 /**
  *
  */
-std::string Robot::getHostname() {
+std::string Robot::getHostname() const {
 	return hostname_;
 }
 
 /**
  *
  */
-std::string Robot::getPort() {
+std::string Robot::getPort() const {
 	return port_;
 }
 
 /**
  *
  */
-bool Robot::isHolonomic() {
+bool Robot::isHolonomic() const {
 	return holonomic_;
 }
 

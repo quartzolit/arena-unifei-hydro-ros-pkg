@@ -10,6 +10,8 @@ find_package(catkin REQUIRED COMPONENTS
 	tf
 	)
 
+catkin_package()
+
 include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(arena_unifei_node 
@@ -26,3 +28,7 @@ add_executable(arena_unifei_node
 target_link_libraries(arena_unifei_node
    	${catkin_LIBRARIES}
 )
+
+add_dependencies(arena_unifei_node 
+	${catkin_EXPORTED_TARGETS}
+	)

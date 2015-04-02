@@ -3,7 +3,7 @@
  *
  *  Version: 1.0.0.0
  *  Created on: 16/03/2015
- *  Modified on: 16/03/2014
+ *  Modified on: 01/04/2014
  *  Author: Adriano Henrique Rossette Leite (adrianohrl@gmail.com)
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
@@ -17,8 +17,12 @@ class P3_DX : public Pioneer {
 
 public:
 
-	P3_DX(ros::NodeHandle nh, std::string name);
+	P3_DX(ros::NodeHandle nh);
 	~P3_DX();
+
+	static const int NUMBER_OF_DISTANCE_SENSORS = 16;
+	
+	int getNumberOfDistanceSensors() const;
 
 };
 
