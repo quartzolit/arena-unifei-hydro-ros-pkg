@@ -16,6 +16,7 @@
 
 #include <ros/ros.h>
 #include <string>
+#include <vector>
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/PointCloud.h>
 #include <geometry_msgs/Twist.h>
@@ -25,7 +26,7 @@ class Robot {
 
 public:
 
-	Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic = false);
+	Robot(ros::NodeHandle nh, std::string name, std::string ns, std::string dist_sensors, bool holonomic = false);
 	~Robot();
 
 	void spin();
@@ -45,8 +46,6 @@ protected:
 	void setPort(std::string port);
 	void setHolonomic(bool holonomic);
 
-	virtual std::string getDistanceSensorsTopicName() const = 0;
-
 private:
 
 	ros::NodeHandle nh_;
@@ -64,6 +63,7 @@ private:
 	double start_x_, start_y_, start_phi_;
 	double curr_x_, curr_y_, curr_phi_, prev_phi_;
 	double disp_x_, disp_y_, disp_phi_;
+	std::vector<geometry_msgs::Point32> dist_sensors_;
 
 	void readParameters();
 	void publishVelocity();

@@ -13,7 +13,7 @@
 /**
  *
  */
-Pioneer::Pioneer(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) : Robot(nh, name, ns, holonomic){
+Pioneer::Pioneer(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) : Robot(nh, name, ns, "sonar", holonomic) {
 	setPort("8101");
 }
 
@@ -22,11 +22,4 @@ Pioneer::Pioneer(ros::NodeHandle nh, std::string name, std::string ns, bool holo
  */
 Pioneer::~Pioneer() {
 	
-}
-
-/**
- *
- */
-std::string Pioneer::getDistanceSensorsTopicName() const {
-	return "sonar";
 }

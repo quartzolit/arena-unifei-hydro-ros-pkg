@@ -13,7 +13,7 @@
 /**
  *
  */
-Festo::Festo(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) : Robot(nh, name, ns, holonomic) {
+Festo::Festo(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) : Robot(nh, name, ns, "distance_sensors", holonomic) {
 	setPort("12080");
 }
 
@@ -22,11 +22,4 @@ Festo::Festo(ros::NodeHandle nh, std::string name, std::string ns, bool holonomi
  */
 Festo::~Festo() {
 	
-}
-
-/**
- *
- */
-std::string Festo::getDistanceSensorsTopicName() const {
-	return "distance_sensors";
 }

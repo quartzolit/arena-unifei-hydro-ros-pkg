@@ -13,15 +13,15 @@
 /**
  *
  */
-Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic) {
+Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, std::string dist_sensors, bool holonomic) {
 	nh_ = nh;
 	name_ = name;
 	odom_setted_ = false;
 	readParameters();
 	holonomic_ = holonomic;
-	odom_sub_ = nh_.subscribe("/" + ns + "odom", 1, &Robot::odometryCallback, this);
-	dist_sub_ = nh_.subscribe("/" + ns, 1, &Robot::distanceSensorsCallback, this);
 	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/" + ns + "cmd_vel", 1);
+	odom_sub_ = nh_.subscribe("/" + ns + "odom", 1, &Robot::odometryCallback, this);
+	dist_sub_ = nh_.subscribe("/" + ns + dist_sensors, 1, &Robot::distanceSensorsCallback, this);
 }
 
 /**
@@ -30,6 +30,7 @@ Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomi
 Robot::~Robot() {
 	cmd_vel_pub_.shutdown();
 	odom_sub_.shutdown();
+	dist_sub_.shutdown();
 }
 
 /**
@@ -83,7 +84,10 @@ void Robot::odometryCallback(const nav_msgs::OdometryConstPtr& msg) {
 }
 
 void Robot::distanceSensorsCallback(const sensor_msgs::PointCloudConstPtr& msg) {
-	
+	dist_sensors_.clear();
+	for (int i = 0; i < getNumberOfDistanceSensors(); i++) {
+		dist_sensors_.push_back(msg->points[i]);
+	}
 }
 
 /**
