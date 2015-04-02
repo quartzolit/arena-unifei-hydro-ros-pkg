@@ -17,6 +17,7 @@
 #include <ros/ros.h>
 #include <string>
 #include <nav_msgs/Odometry.h>
+#include <sensor_msgs/PointCloud.h>
 #include <geometry_msgs/Twist.h>
 #include <tf/transform_datatypes.h>
 
@@ -36,11 +37,15 @@ public:
 	void setVelocity(double vel_x, double vel_y, double vel_phi);
 	void resetOdometry();
 
+	virtual int getNumberOfDistanceSensors() const = 0;
+
 protected:
 	
 	void setHostname(std::string hostname);
 	void setPort(std::string port);
 	void setHolonomic(bool holonomic);
+
+	virtual std::string getDistanceSensorsTopicName() const = 0;
 
 private:
 
@@ -51,6 +56,7 @@ private:
 	geometry_msgs::Twist cmd_vel_msg_;
 	ros::Publisher cmd_vel_pub_;
 	ros::Subscriber odom_sub_;
+	ros::Subscriber dist_sub_;
 	bool odom_setted_;
 	bool holonomic_;
 	double min_linear_vel_, max_linear_vel_;
@@ -62,6 +68,7 @@ private:
 	void readParameters();
 	void publishVelocity();
 	void odometryCallback(const nav_msgs::OdometryConstPtr& msg);
+	void distanceSensorsCallback(const sensor_msgs::PointCloudConstPtr& msg);
 
 };
 

@@ -18,7 +18,13 @@ class Festo : public Robot {
 public:
 
 	Festo(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic = false);
-	~Festo();
+	~Festo();	
+
+	virtual int getNumberOfDistanceSensors() const = 0;
+
+protected:
+	
+	std::string getDistanceSensorsTopicName() const;
 
 };
 

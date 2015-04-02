@@ -20,6 +20,12 @@ public:
 	Pioneer(ros::NodeHandle nh, std::string name, std::string ns, bool holonomic = false);
 	~Pioneer();
 
+	virtual int getNumberOfDistanceSensors() const = 0;
+
+protected:
+
+	std::string getDistanceSensorsTopicName() const;
+
 };
 
 #endif /* PIONEER_H_ */

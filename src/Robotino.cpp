@@ -23,3 +23,10 @@ Robotino::Robotino(ros::NodeHandle nh) : Festo(nh, "robotino_", "robotino/", tru
 Robotino::~Robotino() {
 	
 }
+
+/**
+ *
+ */
+int Robotino::getNumberOfDistanceSensors() const {
+	return Robotino::NUMBER_OF_DISTANCE_SENSORS;
+}

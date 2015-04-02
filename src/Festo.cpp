@@ -23,3 +23,10 @@ Festo::Festo(ros::NodeHandle nh, std::string name, std::string ns, bool holonomi
 Festo::~Festo() {
 	
 }
+
+/**
+ *
+ */
+std::string Festo::getDistanceSensorsTopicName() const {
+	return "distance_sensors";
+}

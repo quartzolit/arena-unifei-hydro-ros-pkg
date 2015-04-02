@@ -20,6 +20,10 @@ public:
 	P3_DX(ros::NodeHandle nh);
 	~P3_DX();
 
+	static const int NUMBER_OF_DISTANCE_SENSORS = 16;
+	
+	int getNumberOfDistanceSensors() const;
+
 };
 
 #endif /* P3_DX_H_ */

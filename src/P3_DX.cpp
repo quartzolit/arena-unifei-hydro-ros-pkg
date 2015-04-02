@@ -23,3 +23,10 @@ P3_DX::P3_DX(ros::NodeHandle nh) : Pioneer(nh, "p3_dx_", "p3_dx/", false) {
 P3_DX::~P3_DX() {
 	
 }
+
+/**
+ *
+ */
+int P3_DX::getNumberOfDistanceSensors() const {
+	return P3_DX::NUMBER_OF_DISTANCE_SENSORS;
+}

@@ -20,6 +20,10 @@ public:
 	AmigoBot(ros::NodeHandle nh, std::string number);
 	~AmigoBot();
 
+	static const int NUMBER_OF_DISTANCE_SENSORS = 8;
+	
+	int getNumberOfDistanceSensors() const;
+
 };
 
 #endif /* AMIGOBOT_H_ */

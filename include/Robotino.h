@@ -20,6 +20,10 @@ public:
 	Robotino(ros::NodeHandle nh);
 	~Robotino();
 
+	static const int NUMBER_OF_DISTANCE_SENSORS = 9;
+	
+	int getNumberOfDistanceSensors() const;
+
 };
 
 #endif /* Robotino_H_ */

@@ -23,3 +23,10 @@ AmigoBot::AmigoBot(ros::NodeHandle nh, std::string number) : Pioneer(nh, "amg_bo
 AmigoBot::~AmigoBot() {
 	
 }
+
+/**
+ *
+ */
+int AmigoBot::getNumberOfDistanceSensors() const {
+	return AmigoBot::NUMBER_OF_DISTANCE_SENSORS;
+}

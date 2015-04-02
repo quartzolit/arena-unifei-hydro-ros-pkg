@@ -23,3 +23,10 @@ Pioneer::Pioneer(ros::NodeHandle nh, std::string name, std::string ns, bool holo
 Pioneer::~Pioneer() {
 	
 }
+
+/**
+ *
+ */
+std::string Pioneer::getDistanceSensorsTopicName() const {
+	return "sonar";
+}

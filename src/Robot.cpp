@@ -3,7 +3,7 @@
  *
  *  Version: 1.0.0.0
  *  Created on: 16/03/2015
- *  Modified on: 16/03/2014
+ *  Modified on: 01/04/2014
  *  Author: Adriano Henrique Rossette Leite (adrianohrl@gmail.com)
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
@@ -20,6 +20,7 @@ Robot::Robot(ros::NodeHandle nh, std::string name, std::string ns, bool holonomi
 	readParameters();
 	holonomic_ = holonomic;
 	odom_sub_ = nh_.subscribe("/" + ns + "odom", 1, &Robot::odometryCallback, this);
+	dist_sub_ = nh_.subscribe("/" + ns, 1, &Robot::distanceSensorsCallback, this);
 	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/" + ns + "cmd_vel", 1);
 }
 
@@ -79,6 +80,10 @@ void Robot::odometryCallback(const nav_msgs::OdometryConstPtr& msg) {
 	}
 	disp_phi_ += curr_phi_ - prev_phi_;
 	prev_phi_ = curr_phi_;
+}
+
+void Robot::distanceSensorsCallback(const sensor_msgs::PointCloudConstPtr& msg) {
+	
 }
 
 /**

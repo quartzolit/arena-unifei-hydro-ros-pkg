@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-	<arg name="_hostname" default="/dev/ttyS0"/>
-	<arg name="_machine" default=""/>
-	<node name="RosAria" pkg="rosaria" type="RosAria" machine="$(arg _machine)">
-		<param name="port" value="$(arg _hostname)" />
+	<arg name="port" default="/dev/ttyS0"/>
+	<arg name="machine" default=""/>
+	<node name="RosAria" pkg="rosaria" type="RosAria" output="screen"><!--machine="$(arg machine)"-->
+		<param name="port" value="$(arg port)" />
 	</node>
 </launch>
