@@ -8,7 +8,16 @@
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
 
-#include <AmigoBot.h>
+#include "br/edu/unifei/expertinos/robots/AmigoBot.h"
+
+using namespace br::edu::unifei::expertinos::robots;
+
+/**
+ *
+ */
+AmigoBot::AmigoBot(ros::NodeHandle nh) : Pioneer(nh, "amg_bot_", "amigobot/", false) {
+	
+}
 
 /**
  *

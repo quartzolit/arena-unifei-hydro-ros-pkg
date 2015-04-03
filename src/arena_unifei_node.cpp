@@ -8,12 +8,12 @@
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
 
-#include "ArenaUnifei.h"
+#include "br/edu/unifei/expertinos/arena/LRO.h"
 
 int main(int argc, char** argv)
 {
 	ros::init(argc, argv, "arena_unifei_node");
-	ArenaUnifei arena;
-	arena.spin();
+	br::edu::unifei::expertinos::arena::LRO arena_lro;
+	arena_lro.spin();
 	return 0;
 }

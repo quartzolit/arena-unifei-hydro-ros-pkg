@@ -8,12 +8,21 @@
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
 
-#include <P3_DX.h>
+#include "br/edu/unifei/expertinos/robots/P3_DX.h"
+
+using namespace br::edu::unifei::expertinos::robots;
 
 /**
  *
  */
 P3_DX::P3_DX(ros::NodeHandle nh) : Pioneer(nh, "p3_dx_", "p3_dx/", false) {
+	
+}
+
+/**
+ *
+ */
+P3_DX::P3_DX(ros::NodeHandle nh, std::string number) : Pioneer(nh, "p3_dx_" + number + "_", "p3_dx/" + number + "/", false) {
 	
 }
 

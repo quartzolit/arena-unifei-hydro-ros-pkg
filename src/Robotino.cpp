@@ -8,12 +8,21 @@
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
 
-#include <Robotino.h>
+#include "br/edu/unifei/expertinos/robots/Robotino.h"
+
+using namespace br::edu::unifei::expertinos::robots;
 
 /**
  *
  */
 Robotino::Robotino(ros::NodeHandle nh) : Festo(nh, "robotino_", "robotino/", true) {
+	
+}
+
+/**
+ *
+ */
+Robotino::Robotino(ros::NodeHandle nh, std::string number) : Festo(nh, "robotino_" + number + "_", "robotino/" + number + "/", false) {
 	
 }
 

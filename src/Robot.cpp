@@ -8,7 +8,9 @@
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
 
-#include "Robot.h"
+#include "br/edu/unifei/expertinos/robots/Robot.h"
+
+using namespace br::edu::unifei::expertinos::robots;
 
 /**
  *

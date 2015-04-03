@@ -22,7 +22,7 @@ add_executable(arena_unifei_node
 	src/AmigoBot.cpp
 	src/P3_DX.cpp
 	src/Robotino.cpp
-	src/ArenaUnifei.cpp
+	src/LRO.cpp
 	)
 
 target_link_libraries(arena_unifei_node
