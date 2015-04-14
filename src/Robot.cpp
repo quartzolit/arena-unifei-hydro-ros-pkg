@@ -8,7 +8,9 @@
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
 
-#include "Robot.h"
+#include "br/edu/unifei/expertinos/robots/Robot.h"
+
+using namespace br::edu::unifei::expertinos::robots;
 
 /**
  *
@@ -81,6 +83,27 @@ void Robot::odometryCallback(const nav_msgs::OdometryConstPtr& msg) {
 	prev_phi_ = curr_phi_;
 }
 
+/**
+ *
+ */
+double Robot::getOdometry_X() {
+	return disp_x_;
+
+}
+/**
+ *
+ */
+double Robot::getOdometry_Y() {
+	return disp_y_;
+
+}
+/**
+ *
+ */
+double Robot::getOdometry_PHI() {
+	return disp_phi_;
+
+}
 /**
  *
  */
@@ -165,4 +188,11 @@ void Robot::setHolonomic(bool holonomic) {
  */
 void Robot::readParameters() {
 	nh_.param<std::string>("hn_" + name_ + "_", hostname_, "");
-} 
+}
+
+/**
+ *
+ */
+
+
+

@@ -8,7 +8,9 @@
  *  Maintainer: Expertinos UNIFEI (expertinos.unifei@gmail.com)
  */
 
-#include <Pioneer.h>
+#include "br/edu/unifei/expertinos/robots/Pioneer.h"
+
+using namespace br::edu::unifei::expertinos::robots;
 
 /**
  *
@@ -45,7 +47,7 @@ std::vector<geometry_msgs::Point32> Pioneer::getDistanceSensorsValue() const {
 /**
  *
  */	
-geometry_msgs::Point32 Pioneer::getDistanceSensorsValue(int index) const {
+geometry_msgs::Point32 Pioneer::getDistanceSensorValue(int index) const {
 	geometry_msgs::Point32 value;
 	if (index >= 0 && index < getNumberOfDistanceSensors()) {
 		value = dist_values_.at(index);
