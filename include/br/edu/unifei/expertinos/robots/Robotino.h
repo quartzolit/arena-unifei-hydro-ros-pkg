@@ -12,6 +12,8 @@
 #define ROBOTINO_H_
 
 #include "br/edu/unifei/expertinos/robots/Festo.h"
+#include "string.h"
+#include <vector>
 
 namespace br {
 
@@ -31,9 +33,12 @@ namespace br {
 						Robotino(ros::NodeHandle nh, std::string number);
 						~Robotino();
 
-						static const int NUMBER_OF_DISTANCE_SENSORS = 9;
-	
+						static const int NUMBER_OF_DISTANCE_SENSORS = 9;	
+						std::vector<float> DISTANCE_SENSORS_DIRECTION;
+
 						int getNumberOfDistanceSensors() const;
+						std::vector<float> getDistanceSensorsDirection() const;
+						float getDistanceSensorDirection(int index) const;
 
 					};
 			

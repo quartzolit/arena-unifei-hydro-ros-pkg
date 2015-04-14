@@ -31,9 +31,13 @@ namespace br {
 						AmigoBot(ros::NodeHandle nh, std::string number);
 						~AmigoBot();
 
-						static const int NUMBER_OF_DISTANCE_SENSORS = 8;
-	
+						static const int NUMBER_OF_DISTANCE_SENSORS = 8;	
+						std::vector<float> DISTANCE_SENSORS_DIRECTION;
+
 						int getNumberOfDistanceSensors() const;
+						std::vector<float> getDistanceSensorsDirection() const;
+						float getDistanceSensorDirection(int index) const;
+
 
 					};
 			

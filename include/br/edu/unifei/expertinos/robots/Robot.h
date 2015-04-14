@@ -48,9 +48,16 @@ namespace br {
 						void setVelocity(double vel_x, double vel_y, double vel_phi);
 						void resetOdometry();
 
+						double getOdometry_X();
+						double getOdometry_Y();
+						double getOdometry_PHI();
+						
+
 						virtual int getNumberOfDistanceSensors() const = 0;
 						virtual std::vector<geometry_msgs::Point32> getDistanceSensorsValue() const = 0;
 						virtual geometry_msgs::Point32 getDistanceSensorValue(int index) const = 0;
+						virtual std::vector<float> getDistanceSensorsDirection() const = 0;
+						virtual float getDistanceSensorDirection(int index) const = 0;
 
 					protected:
 	

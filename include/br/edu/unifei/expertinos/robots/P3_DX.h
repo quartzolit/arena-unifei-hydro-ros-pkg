@@ -31,9 +31,12 @@ namespace br {
 						P3_DX(ros::NodeHandle nh, std::string number);
 						~P3_DX();
 
-						static const int NUMBER_OF_DISTANCE_SENSORS = 16;
+						static const int NUMBER_OF_DISTANCE_SENSORS = 16;	
+						std::vector<float> DISTANCE_SENSORS_DIRECTION;
 	
 						int getNumberOfDistanceSensors() const;
+						std::vector<float> getDistanceSensorsDirection() const;
+						float getDistanceSensorDirection(int index) const;
 
 					};
 			

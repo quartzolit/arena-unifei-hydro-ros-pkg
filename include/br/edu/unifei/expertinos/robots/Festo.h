@@ -36,6 +36,8 @@ namespace br {
 						geometry_msgs::Point32 getDistanceSensorValue(int index) const;
 
 						virtual int getNumberOfDistanceSensors() const = 0;
+						virtual std::vector<float> getDistanceSensorsDirection() const = 0;
+						virtual float getDistanceSensorDirection(int index) const = 0;
 
 					private:
 
